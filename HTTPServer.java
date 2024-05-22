@@ -54,8 +54,136 @@ public class HTTPServer {
             } while (true);
 
             if (path.equals("/") || path.equals("/index.html")) {
-                String simpleHTML = "<html>\r\n<head>\r\n<title>Hello World</title>\r\n<body>\r\n<h1>HELLO WORLD!</h1>\r\n</body>\r\n</html>\r\n";
-
+                String htmlString = "<html>\r\n<head>\r\n<title>Hello World</title>\r\n<body>\r\n<h1>HELLO WORLD!</h1>\r\n</body>\r\n</html>\r\n";
+                String simpleHTML  = """
+                        <!DOCTYPE html>\r
+                        <html lang="en">\r
+                        <head>\r
+                          <meta charset="UTF-8">\r
+                          <meta name="viewport" content="width=device-width, initial-scale=1.0">\r
+                          <title>CSS3 Loading Animation</title>\r
+                          <style>\r
+                            @import "compass/css3";\r
+                            $speed: 2.5s;\r
+                            * {\r
+                              margin: 0px;\r
+                              padding: 0px;\r
+                              border: 0px;\r
+                            }\r
+                            html, body {\r
+                              min-height: 100%;\r
+                            }\r
+                            body {\r
+                              background: radial-gradient(#eee,#444);\r
+                            }\r
+                            .loader {\r
+                              position: absolute;\r
+                              top: 0px;\r
+                              bottom: 0px;\r
+                              left: 0px;\r
+                              right: 0px;\r
+                              margin: auto;\r
+                              width: 175px;\r
+                              height: 100px;\r
+                            }\r
+                            .loader span {\r
+                              display: block;\r
+                              background: #ccc;\r
+                              width: 7px;\r
+                              height: 10%;\r
+                              border-radius: 14px;\r
+                              margin-right: 5px;\r
+                              float: left;\r
+                              margin-top: 25%;\r
+                            }\r
+                            .loader span:last-child {\r
+                              margin-right: 0px;\r
+                            }\r
+                            .loader span:nth-child(1) {\r
+                              animation: load 2.5s 1.4s infinite linear;\r
+                            }\r
+                            .loader span:nth-child(2) {\r
+                              animation: load 2.5s 1.2s infinite linear;\r
+                            }\r
+                            .loader span:nth-child(3) {\r
+                              animation: load 2.5s 1s infinite linear;\r
+                            }\r
+                            .loader span:nth-child(4) {\r
+                              animation: load 2.5s 0.8s infinite linear;\r
+                            }\r
+                            .loader span:nth-child(5) {\r
+                              animation: load 2.5s 0.6s infinite linear;\r
+                            }\r
+                            .loader span:nth-child(6) {\r
+                              animation: load 2.5s 0.4s infinite linear;\r
+                            }\r
+                            .loader span:nth-child(7) {\r
+                              animation: load 2.5s 0.2s infinite linear;\r
+                            }\r
+                            .loader span:nth-child(8) {\r
+                              animation: load 2.5s 0s infinite linear;\r
+                            }\r
+                            .loader span:nth-child(9) {\r
+                              animation: load 2.5s 0.2s infinite linear;\r
+                            }\r
+                            .loader span:nth-child(10) {\r
+                              animation: load 2.5s 0.4s infinite linear;\r
+                            }\r
+                            .loader span:nth-child(11) {\r
+                              animation: load 2.5s 0.6s infinite linear;\r
+                            }\r
+                            .loader span:nth-child(12) {\r
+                              animation: load 2.5s 0.8s infinite linear;\r
+                            }\r
+                            .loader span:nth-child(13) {\r
+                              animation: load 2.5s 1s infinite linear;\r
+                            }\r
+                            .loader span:nth-child(14) {\r
+                              animation: load 2.5s 1.2s infinite linear;\r
+                            }\r
+                            .loader span:nth-child(15) {\r
+                              animation: load 2.5s 1.4s infinite linear;\r
+                            }\r
+                            @keyframes load {\r
+                              0% {\r
+                                background: #ccc;\r
+                                margin-top: 25%;\r
+                                height: 10%;\r
+                              }\r
+                              50% {\r
+                                background: #444;\r
+                                height: 100%;\r
+                                margin-top: 0%;\r
+                              }\r
+                              100% {\r
+                                background: #ccc;\r
+                                height: 10%;\r
+                                margin-top: 25%;\r
+                              }\r
+                            }\r
+                          </style>\r
+                        </head>\r
+                        <body>\r
+                          <div class="loader">\r
+                            <span></span>\r
+                            <span></span>\r
+                            <span></span>\r
+                            <span></span>\r
+                            <span></span>\r
+                            <span></span>\r
+                            <span></span>\r
+                            <span></span>\r
+                            <span></span>\r
+                            <span></span>\r
+                            <span></span>\r
+                            <span></span>\r
+                            <span></span>\r
+                            <span></span>\r
+                            <span></span>\r
+                          </div>\r
+                        </body>\r
+                        </html>\r
+                        """;
                 writer.write("HTTP/1.1 200 OK\r\n");
                 writer.write("Content-Type: text/html\r\n");
                 writer.write("Content-Length: " + simpleHTML.length() + "\r\n");
@@ -75,9 +203,8 @@ public class HTTPServer {
 
                 writer.flush();
             }
-        } else {
-            // Could implement other methods here
-        }
+        }  // Could implement other methods here
+
         clientSocket.close();
     }
 }
